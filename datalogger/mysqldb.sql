@@ -35,6 +35,14 @@ INSERT INTO `config` VALUES ('AD05', 0, NOW(), '', 1);
 INSERT INTO `config` VALUES ('AD06', 0, NOW(), '', 1);
 INSERT INTO `config` VALUES ('AD07', 0, NOW(), '', 1);
 INSERT INTO `config` VALUES ('AD08', 0, NOW(), '', 1);
+
+INSERT INTO `config` VALUES ('PU01', 1, NOW(), '', 1);
+INSERT INTO `config` VALUES ('PU02', 1, NOW(), '', 1);
+INSERT INTO `config` VALUES ('PU03', 1, NOW(), '', 1);
+INSERT INTO `config` VALUES ('PU04', 1, NOW(), '', 1);
+INSERT INTO `config` VALUES ('PU05', 1, NOW(), '', 1);
+INSERT INTO `config` VALUES ('PU06', 1, NOW(), '', 1);
+
 COMMIT;
 
 # If data tables doesn't already exist create it
