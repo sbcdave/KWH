@@ -14,52 +14,54 @@ sql = "SELECT `key`, `value` FROM `config` WHERE `active`=1"
 
 # constantly checking kwh environment variables from config table
 # to turn on/turn off appropriate pulse channel
-while True:
-    records = DB.SELECT(sql)
-    # dictionary of all key:value pair from config table
-    config_var = {}
-    for row in records:
-        config_var[row[0]] = row[1]
+records = DB.SELECT(sql)
+# dictionary of all key:value pair from config table
+config_var = {}
+for row in records:
+    config_var[row[0]] = row[1]
 
-    # take out the config variables for pulse channels
-    config = [config_var['PU01'],
-              config_var['PU02'],
-              config_var['PU03'],
-              config_var['PU04'],
-              config_var['PU05'],
-              config_var['PU06']]
-
-    # execute/stop the corresponding python file for each pulse channel
-    if config[0] == '1':
-        pu01 = subprocess.Popen('/kwh/data_collectors/pulse/PU01.py')
-    else
+# execute/stop the corresponding python file for each pulse channel
+if config_var['PU01'] == '1':
+    pu01 = subprocess.Popen('/kwh/data_collectors/pulse/PU01.py')
+    pu01_running = True
+else
+    if pu01_running == True:
         pu01.terminate() 
         # pu01 HAS TO EXIST BEFOREHAND 
         # => INITIALLY, CONFIG VALUES FOR ALL PULSE CHANNELS HAS TO BE 1
 
-    if config[1] == '1':
-        pu02 = subprocess.Popen('/kwh/data_collectors/pulse/PU02.py')
-    else
+if config_var['PU02'] == '1':
+    pu02 = subprocess.Popen('/kwh/data_collectors/pulse/PU02.py')
+    pu02_running = True 
+else
+    if pu02_running == True:
         pu02.terminate()
 
-    if config[2] == '1':
-        pu03 = subprocess.Popen('/kwh/data_collectors/pulse/PU03.py')
-    else
+if config_var['PU03'] == '1':
+    pu03 = subprocess.Popen('/kwh/data_collectors/pulse/PU03.py')
+    pu03_running = True
+else
+    if pu03_running == True
         pu03.terminate()
 
-    if config[3] == '1':
-        pu04 = subprocess.Popen('/kwh/data_collectors/pulse/PU04.py')
-    else
+if config_var['PU04'] == '1':
+    pu04 = subprocess.Popen('/kwh/data_collectors/pulse/PU04.py')
+    pu04_running = True
+else
+    if pu04_running == True:
         pu04.terminate()
 
-    if config[4] == '1':
-        pu05 = subprocess.Popen('/kwh/data_collectors/pulse/PU05.py')
-    else
+if config_var['PU05'] == '1':
+    pu05 = subprocess.Popen('/kwh/data_collectors/pulse/PU05.py')
+    pu05_running = True
+else
+    if pu05_running == True:
         pu05.terminate()
 
-    if config[5] == '1':
-        pu06 = subprocess.Popen('/kwh/data_collectors/pulse/PU06.py')
-    else
+if config_var['PU06'] == '1':
+    pu06 = subprocess.Popen('/kwh/data_collectors/pulse/PU06.py')
+    pu06_running = True
+else
+    if pu06_running == True:
         pu06.terminate()
 
-pi.stop()
