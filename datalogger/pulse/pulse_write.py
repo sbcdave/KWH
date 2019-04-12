@@ -18,8 +18,9 @@ config = [config_var['PU01'],
 
 for i in range(6):
     if config[i] == '1':
+        j = i+1 # add one to get to PU01 instead of PU00
         #grab the value from the PU01-6 file
-        value = open("/kwh/pulse/PU0" + i, 'r')
+        value = open("/kwh/data_collectors/pulse/PU0" + str(j), 'r').read()
         #write into the data table
-        sql_insert = "INSERT INTO `data` VALUES (now(), 'PU0"+i+"', "+value+")"
+        sql_insert = "INSERT INTO `data` VALUES (now(), 'PU0"+str(j)+"', "+value+")"
         result = DB.INSERT(sql_insert)
